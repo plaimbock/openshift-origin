@@ -236,10 +236,7 @@ DOMAIN=`domainname -d`
 DNSSERVER=`tail -1 /etc/resolv.conf | cut -d ' ' -f 2`
 runuser -l $SUDOUSER -c "ansible-playbook /home/$SUDOUSER/openshift-ansible/playbooks/openshift-node/network_manager.yml"
 
-sleep 20
-runuser -l $SUDOUSER -c "ansible all -b -m service -a \"name=NetworkManager state=restarted\""
-sleep 20
-runuser -l $SUDOUSER -c "ansible all -b -m command -a \"nmcli con modify eth0 ipv4.dns-search $DOMAIN\""
+sleep 10
 runuser -l $SUDOUSER -c "ansible all -b -m service -a \"name=NetworkManager state=restarted\""
 echo $(date) " - NetworkManager configuration complete"
 
