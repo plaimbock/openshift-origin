@@ -237,7 +237,7 @@ DNSSERVER=`tail -1 /etc/resolv.conf | cut -d ' ' -f 2`
 runuser -l $SUDOUSER -c "ansible-playbook /home/$SUDOUSER/openshift-ansible/playbooks/openshift-node/network_manager.yml"
 
 sleep 10
-runuser -l $SUDOUSER -c "ansible all -b -m service -a \"name=NetworkManager state=restarted\""
+runuser -l $SUDOUSER -c "ansible all -b -o -m service -a \"name=NetworkManager state=restarted\""
 echo $(date) " - NetworkManager configuration complete"
 
 # Create /etc/origin/cloudprovider/azure.conf on all hosts if Azure is enabled
@@ -337,10 +337,10 @@ then
 	echo $(date) " - Rebooting cluster to complete installation"
 	runuser -l $SUDOUSER -c  "oc label --overwrite nodes $MASTER-0 openshift-infra=apiserver"
 	runuser -l $SUDOUSER -c  "oc label --overwrite nodes --all logging-infra-fluentd=true logging=true"
-	runuser -l $SUDOUSER -c  "ansible localhost -b  -m service -a 'name=openvswitch state=restarted'"
-	runuser -l $SUDOUSER -c  "ansible localhost -b  -m service -a 'name=origin-master-api state=restarted'"
-	runuser -l $SUDOUSER -c  "ansible localhost -b  -m service -a 'name=origin-master-controllers state=restarted'"
-	runuser -l $SUDOUSER -c  "ansible localhost -b  -m service -a 'name=origin-node state=restarted'"
+	runuser -l $SUDOUSER -c  "ansible localhost -b -o -m service -a 'name=openvswitch state=restarted'"
+	runuser -l $SUDOUSER -c  "ansible localhost -b -o -m service -a 'name=origin-master-api state=restarted'"
+	runuser -l $SUDOUSER -c  "ansible localhost -b -o -m service -a 'name=origin-master-controllers state=restarted'"
+	runuser -l $SUDOUSER -c  "ansible localhost -b -o -m service -a 'name=origin-node state=restarted'"
 	runuser -l $SUDOUSER -c "ansible-playbook -f 10 ~/openshift-container-platform-playbooks/reboot-master-origin.yaml"
 	runuser -l $SUDOUSER -c "ansible-playbook -f 10 ~/openshift-container-platform-playbooks/reboot-nodes.yaml"
 
