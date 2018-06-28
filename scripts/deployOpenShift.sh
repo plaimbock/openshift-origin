@@ -50,6 +50,8 @@ sed -i -e "s/^#host_key_checking = False/host_key_checking = False/" /etc/ansibl
 sed -i -e "s/^#pty=False/pty=False/" /etc/ansible/ansible.cfg
 # enable pipelining
 sed -i -e "s/^#pipelining = False/pipelining = True" /etc/ansible/ansible.cfg
+# set forks to 10 everywhere
+sed -i -e "s/^#forks.*$/forks          = 10/" /etc/ansible/ansible.cfg
 
 # Cloning Ansible playbook repository
 (cd /home/$SUDOUSER && git clone https://github.com/Microsoft/openshift-container-platform-playbooks.git)
