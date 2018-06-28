@@ -365,9 +365,9 @@ then
 	
 	# Installing Service Catalog, Ansible Service Broker and Template Service Broker
 	
-	echo $(date) "- Installing Service Catalog, Ansible Service Broker and Template Service Broker"
-	runuser -l $SUDOUSER -c "ansible-playbook -f 10 /home/$SUDOUSER/openshift-ansible/playbooks/openshift-service-catalog/config.yml"
-	echo $(date) "- Service Catalog, Ansible Service Broker and Template Service Broker installed successfully"
+	#echo $(date) "- Installing Service Catalog, Ansible Service Broker and Template Service Broker"
+	#runuser -l $SUDOUSER -c "ansible-playbook -f 10 /home/$SUDOUSER/openshift-ansible/playbooks/openshift-service-catalog/config.yml"
+	#echo $(date) "- Service Catalog, Ansible Service Broker and Template Service Broker installed successfully"
 	
 fi
 
