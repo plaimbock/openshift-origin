@@ -276,9 +276,9 @@ echo $(date) " - Modifying sudoers"
 sed -i -e "s/Defaults    requiretty/# Defaults    requiretty/" /etc/sudoers
 sed -i -e '/Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"/aDefaults    env_keep += "PATH"' /etc/sudoers
 
-echo $(date) "- Re-enabling requiretty"
+#echo $(date) "- Re-enabling requiretty"
 
-sed -i -e "s/# Defaults    requiretty/Defaults    requiretty/" /etc/sudoers
+#sed -i -e "s/# Defaults    requiretty/Defaults    requiretty/" /etc/sudoers
 
 # Adding user to OpenShift authentication file
 echo $(date) "- Adding OpenShift user"
