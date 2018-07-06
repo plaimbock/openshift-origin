@@ -26,6 +26,7 @@ if hostname -f|grep -- "-0" >/dev/null
 then
    echo $(date) " - Installing Ansible, pyOpenSSL and python-passlib"
    yum -y --enablerepo=epel install ansible pyOpenSSL python-passlib
+   yum -y downgrade ansible
 fi
 
 # Install java to support metrics
